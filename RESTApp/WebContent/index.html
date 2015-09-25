@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html data-ng-app="restApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body data-ng-controller="MainController as mctrl">
+	<button data-ng-click="mctrl.getAllEmp()">GET ALL</button>
+	<hr>
+	<input type="text" placeholder="Enter employee id"
+		data-ng-model="mctrl.empid" required></input>
+	<button data-ng-click="mctrl.getEmp()">GET EMPLOYEE</button>
+	<hr>
+	<input type="text" placeholder="Enter employee id to delete"
+		data-ng-model="mctrl.delid" required></input>
+	<button data-ng-click="mctrl.deleteEmployee()">DELETE EMPLOYEE</button>
+	<hr>
+	<form data-ng-submit="mctrl.addEmployee()">
+		<div>
+			<label>First Name</label> <input type="text"
+				data-ng-model="mctrl.newEmp.firstName"></input>
+		</div>
+		<div>
+			<label>Last Name</label> <input type="text"
+				data-ng-model="mctrl.newEmp.lastName"></input>
+		</div>
+		<div>
+			<label>Email</label> <input type="email"
+				data-ng-model="mctrl.newEmp.email"></input>
+		</div>
+		<div>
+			<label>Phone</label> <input type="text"
+				data-ng-model="mctrl.newEmp.phone"></input>
+		</div>
+		<div>
+			<label>Address 1</label> <input type="text"
+				data-ng-model="mctrl.newEmp.address1"></input>
+		</div>
+		<div>
+			<label>Address 2</label> <input type="text"
+				data-ng-model="mctrl.newEmp.address2"></input>
+		</div>
+		<div>
+			<label>City</label> <input type="text"
+				data-ng-model="mctrl.newEmp.city"></input>
+		</div>
+		<div>
+			<label>State</label> <input type="text"
+				data-ng-model="mctrl.newEmp.state"></input>
+		</div>
+		<div>
+			<label>ZIP</label> <input type="text"
+				data-ng-model="mctrl.newEmp.zip"></input>
+		</div>
+		<div>
+			<button type="submit">Add</button>
+		</div>
+	</form>
+	<hr>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th>City</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!--<tr ng-repeat="person in mctrl.people | filter:mainVm.searchTxt">-->
+			<tr data-ng-repeat="person in mctrl.people">
+				<td>{{person.firstName + ' ' + person.lastName}}</td>
+				<td>{{person.email}}</td>
+				<td>{{person.address1 + ' ' + person.address2}}</td>
+				<td>{{person.city}}</td>
+				<td>{{person.phone}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="https://code.angularjs.org/1.3.16/angular.min.js"></script>
+	<script src="script/app.js"></script>
+	<script src="script/controller/mainctrl.js"></script>
+</body>
+</html>
